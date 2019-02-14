@@ -3,9 +3,19 @@
 </template>
 
 <script>
-export default {
+  import FillInTheBlankClue from '@/components/FillInTheBlankClue.vue'
+  import CheckOffClue from '@/components/CheckOffClue.vue'
+
+  export default {
   name: 'Hunt',
-  props: {},
+  props: {
+    // TODO: pass the hunt data from $app.hunts
+  },
+  components: {
+    FillInTheBlankClue,
+    CheckOffClue
+  },
+
   created () {
     // TODO: build the clue list, stored in vuex with a completed/not-completed status.
 

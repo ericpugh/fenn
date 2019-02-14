@@ -1,6 +1,6 @@
 <template>
-  <ul class="list" v-if="$app.hunts">
-    <li v-for="hunt in $app.hunts" :key="hunt.id" class="hunt">
+  <ul class="list" v-if="hunts">
+    <li v-for="hunt in hunts" :key="hunt.id" class="hunt">
       <img v-if="hunt.assets.images" :src="hunt.assets.images.thumbnail" />
       <h3>{{ hunt.title}}</h3>
       <p>{{ hunt.description }}</p>
@@ -11,9 +11,11 @@
 <script>
 export default {
   name: 'HuntList',
-  props: {},
-  created () {
-    // console.log(this.$app);
+  props: {
+    hunts: Array
+  },
+  methods: {
+
   }
 }
 </script>

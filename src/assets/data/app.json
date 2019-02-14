@@ -2,6 +2,7 @@
   "title" : "Luce Center Scavenger Hunts",
   "welcome" : "Welcome to Scavenger Hunts at the Smithsonian American Art Museum",
   "logo" : "",
+  "about" : "<p>Complete the Luce Center scavenger hunts to test your skills! Bring one of the hunts to the Luce Foundation Center and follow the clues to find specific artworks among the more than 3,000 objects on display.</p><p>Get all of the answers correct and win a prize!</p>",
   "hunts" : [
     {
       "id": "women",
