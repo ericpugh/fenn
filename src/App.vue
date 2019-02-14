@@ -11,6 +11,10 @@
     name: "app",
     components: {
       Navbar
+    },
+    created() {
+      // Set the inital hunts data in state.
+      this.$store.commit('hunts/SET', this.$app.hunts);
     }
   };
 </script>

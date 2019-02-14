@@ -1,25 +1,27 @@
 <template>
-  <h1>This is a hunt!</h1>
+  <div :id="hunt.id" class="hunt">
+    <Jumbotron :title="hunt.title" :welcome="hunt.description" />
+  </div>
 </template>
 
 <script>
+  import Jumbotron from '@/components/Jumbotron.vue'
   import FillInTheBlankClue from '@/components/FillInTheBlankClue.vue'
   import CheckOffClue from '@/components/CheckOffClue.vue'
 
   export default {
   name: 'Hunt',
-  props: {
-    // TODO: pass the hunt data from $app.hunts
-  },
   components: {
+    Jumbotron,
     FillInTheBlankClue,
     CheckOffClue
   },
-
-  created () {
-    // TODO: build the clue list, stored in vuex with a completed/not-completed status.
-
+  computed: {
+    hunt: function () {
+      return this.$store.getters['hunts/getHuntById'](this.$route.params.id);
+    }
   }
+  // TODO: add a watcher on the computed hunt to make "active hunt" etc.
 }
 </script>
 
