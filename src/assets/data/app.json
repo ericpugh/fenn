@@ -1,0 +1,63 @@
+{
+  "title" : "Luce Center Scavenger Hunts",
+  "welcome" : "Welcome to Scavenger Hunts at the Smithsonian American Art Museum",
+  "logo" : "",
+  "hunts" : [
+    {
+      "id": "women",
+      "title": "Women's History Month Scavenger Hunt",
+      "description": "Explore famous women in our collection!",
+      "welcome": "Follow the clues around the Luce Foundation Center to find these pieces by female artists. Answer the questions and bring your completed hunt back to the Luce Center info desk to claim your prize!",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "/img/hunts/women/thumb.jpg",
+          "large" : ""
+        }
+      },
+      "clues" : [
+        {
+          "type": "FillInTheBlankClue",
+          "message" : "",
+          "location": {
+            "name" : "Luce Foundation Center, Folk Art section",
+            "longitude" : "-77.023602",
+            "latitude" : "38.897655"
+          },
+          "solution" : {
+            "text" : "Good job!"
+          }
+        },
+        {
+          "type": "CheckOffClue",
+          "message" : "",
+          "location": {
+            "name" : "Luce Foundation Center, Folk Art section",
+            "longitude" : "-77.023602",
+            "latitude" : "38.897655"
+          },
+          "solution" : {
+            "text" : "Congratulations on solving the clue!"
+          }
+        }
+      ]
+    },
+    {
+      "id": "bears",
+      "title" : "Bear Scavenger Hunt",
+      "description": "Bears, OH MY! Explore bears in our collection.",
+      "welcome": "Find the bears before they go into hibernation!",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "/img/hunts/bears/thumb.jpg",
+          "large" : ""
+        }
+      },
+      "clues" : ["The first clue", "The second clue"],
+      "startLocation" : {
+        "name" : "Smithsonian American Art Museum, Luce Foundation Center",
+        "longitude" : "-77.023602",
+        "latitude" : "38.897655"
+      }
+    }
+  ]
+}
