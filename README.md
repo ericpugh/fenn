@@ -1,6 +1,12 @@
-# fenn
+<span align="center">![Fenn](https://github.com/ericpugh/fenn/raw/master/public/img/icons/android-chrome-192x192.png)</span>
 
-## Project setup
+# Vue.js Scavenger Hunt App
+
+## Configuration
+
+## Development
+
+### Project setup
 ```
 npm install
 ```
@@ -24,6 +30,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
