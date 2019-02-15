@@ -1,22 +1,28 @@
 <template>
   <div class="home">
-    <Jumbotron :title="$app.title" :welcome="$app.welcome" />
-    <HuntList v-bind:hunts="$app.hunts"/>
+    <VLayout row wrap>
+      <VFlex xs12>
+        <h1 v-html="$app.title" class="display-3"></h1>
+        <div v-html="$app.welcome" class="display-1"></div>
+        <VDivider/>
+      </VFlex>
+      <VFlex>
+        <HuntList v-bind:hunts="$app.hunts"/>
+      </VFlex>
+    </VLayout>
   </div>
 </template>
 
 <script>
 import HuntList from '@/components/HuntList.vue'
-import Jumbotron from '@/components/Jumbotron.vue'
 export default {
   name: 'home',
   components: {
-    Jumbotron,
     HuntList
   },
   created () {
-    console.log('App Data:');
-    console.log(this.$app);
+    // console.log('App Data:');
+    // console.log(this.$app);
   }
 }
 </script>

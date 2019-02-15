@@ -8,7 +8,7 @@
       "id": "women",
       "title": "Women's History Month Scavenger Hunt",
       "description": "Explore famous women in our collection!",
-      "welcome": "Follow the clues around the Luce Foundation Center to find these pieces by female artists. Answer the questions and bring your completed hunt back to the Luce Center info desk to claim your prize!",
+      "instructions": "Follow the clues around the Luce Foundation Center to find these pieces by female artists. Answer the questions and bring your completed hunt back to the Luce Center info desk to claim your prize!",
       "assets" : {
         "images" : {
           "thumbnail" : "/img/hunts/women/thumb.jpg",
@@ -18,7 +18,8 @@
       "clues" : [
         {
           "type": "FillInTheBlankClue",
-          "message" : "",
+          "title": "Find the blank thing",
+          "instructions" : "Go to the place and find something and fill in this blank",
           "location": {
             "name" : "Luce Foundation Center, Folk Art section",
             "longitude" : "-77.023602",
@@ -30,7 +31,8 @@
         },
         {
           "type": "CheckOffClue",
-          "message" : "",
+          "title": "Check off the thing here",
+          "instructions" : "Go to some other place and check something off when you've found it",
           "location": {
             "name" : "Luce Foundation Center, Folk Art section",
             "longitude" : "-77.023602",
@@ -46,7 +48,7 @@
       "id": "bears",
       "title" : "Bear Scavenger Hunt",
       "description": "Bears, OH MY! Explore bears in our collection.",
-      "welcome": "Find the bears before they go into hibernation!",
+      "instructions": "Find the bears before they go into hibernation!",
       "assets" : {
         "images" : {
           "thumbnail" : "/img/hunts/bears/thumb.jpg",

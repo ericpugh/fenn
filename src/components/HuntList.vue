@@ -1,13 +1,22 @@
 <template>
-  <ul class="list hunt-list" v-if="hunts">
-    <router-link :to="{ name: 'hunt', params: { id: hunt.id }}" v-for="hunt in hunts" :key="hunt.id">
-      <li>
-        <img v-if="hunt.assets.images" :src="hunt.assets.images.thumbnail" />
-        <h3>{{ hunt.title}}</h3>
-        <p>{{ hunt.description }}</p>
-      </li>
-    </router-link>
-  </ul>
+  <div grid-list-md>
+    <VLayout row wrap>
+      <VFlex v-for="hunt in hunts" :key="hunt.id" xs12 sm4 m3>
+        <VCard :to="{ name: 'hunt', params: { id: hunt.id }}">
+          <VImg v-if="hunt.assets.images" :src="hunt.assets.images.thumbnail"></VImg>
+          <VCardTitle primary-title>
+            <div>
+              <h3 class="headline mb-0">{{ hunt.title}}</h3>
+              <div v-html="hunt.description"></div>
+            </div>
+          </VCardTitle>
+          <VCardActions>
+            <VBtn flat color="orange">Go!</VBtn>
+          </VCardActions>
+        </VCard>
+      </VFlex>
+    </VLayout>
+  </div>
 </template>
 
 <script>
@@ -21,20 +30,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  h3 {}
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    margin: 1rem 0;
-    padding: 1rem;
-    border-bottom: 1px solid #EFEFEF;
-    img {
-      border-radius: 5px;
-    }
-  }
-  a {
-    color: #42b983;
-  }
+
 </style>

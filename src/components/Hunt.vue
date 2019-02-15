@@ -1,18 +1,31 @@
 <template>
   <div :id="hunt.id" class="hunt">
-    <Jumbotron :title="hunt.title" :welcome="hunt.description" />
+    <VLayout row wrap>
+      <!--TODO: Maybe individual Hunts/Clues should be a "sheet" component?-->
+      <VFlex xs12>
+        <h1 v-html="hunt.title" class="display-3"></h1>
+        <div v-html="hunt.instructions"></div>
+        <VDivider/>
+      </VFlex>
+      <VFlex xs12>
+        <VCard v-for="(clue, index) in hunt.clues" :key="index">
+          <VCardTitle>{{ clue.title}}</VCardTitle>
+          <VCardText v-html="clue.instructions"></VCardText>
+          <VCardActions>
+            <component :is="clue.type" :data="clue"></component>
+          </VCardActions>
+        </VCard>
+      </VFlex>
+    </VLayout>
   </div>
 </template>
 
 <script>
-  import Jumbotron from '@/components/Jumbotron.vue'
   import FillInTheBlankClue from '@/components/FillInTheBlankClue.vue'
   import CheckOffClue from '@/components/CheckOffClue.vue'
-
   export default {
   name: 'Hunt',
   components: {
-    Jumbotron,
     FillInTheBlankClue,
     CheckOffClue
   },
