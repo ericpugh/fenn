@@ -1,40 +1,47 @@
 <template>
   <div :id="hunt.id" class="hunt">
-    <VLayout row wrap>
-      <!--TODO: Maybe individual Hunts/Clues should be a "sheet" component?-->
-      <VFlex xs12>
+    <v-layout row wrap>
+      <!--TODO: How to "page" between or show/hide individual Tasks?-->
+      <v-flex xs12>
         <h1 v-html="hunt.title" class="display-3"></h1>
         <div v-html="hunt.instructions"></div>
-        <VDivider/>
-      </VFlex>
-      <VFlex xs12>
-        <VCard v-for="(clue, index) in hunt.clues" :key="index">
-          <VCardTitle>{{ clue.title}}</VCardTitle>
-          <VCardText v-html="clue.instructions"></VCardText>
-          <VCardActions>
-            <component :is="clue.type" :data="clue"></component>
-          </VCardActions>
-        </VCard>
-      </VFlex>
-    </VLayout>
+        <v-divider/>
+      </v-flex>
+      <v-flex xs12>
+        <v-card v-for="(task, index) in hunt.tasks" :key="index">
+          <v-card-title>
+            <v-avatar color="primary">
+              <span class="white--text headline">{{ index + 1}}</span>
+            </v-avatar>
+            <h2>{{ task.title}}</h2>
+          </v-card-title>
+          <v-card-text v-html="task.instructions"></v-card-text>
+          <v-card-actions>
+            <component :is="task.type" :task="task"></component>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 
 <script>
-  import FillInTheBlankClue from '@/components/FillInTheBlankClue.vue'
-  import CheckOffClue from '@/components/CheckOffClue.vue'
+  import TextAnswerTask from '@/components/TextAnswerTask.vue'
+  import NumberAnswerTask from '@/components/NumberAnswerTask.vue'
+  import OnOffTask from '@/components/OnOffTask.vue'
   export default {
-  name: 'Hunt',
-  components: {
-    FillInTheBlankClue,
-    CheckOffClue
-  },
-  computed: {
-    hunt: function () {
-      return this.$store.getters['hunts/getHuntById'](this.$route.params.id);
+    name: 'Hunt',
+    components: {
+      TextAnswerTask,
+      NumberAnswerTask,
+      OnOffTask
+    },
+    computed: {
+      hunt: function () {
+        return this.$store.getters['hunts/getHuntById'](this.$route.params.id);
+      }
     }
-  }
-  // TODO: add a watcher on the computed hunt to make "active hunt" etc.
+    // TODO: add a watcher on the computed hunt to make "active hunt" etc.
 }
 </script>
 

@@ -15,9 +15,9 @@ import Global from "./plugins/global";
 
 Vue.use(Vuetify, {
   theme: {
-    primary: colors.grey.darken1,
-    secondary: colors.grey.lighten1,
-    accent: colors.green.accent4
+    primary: "#3357a3",
+    secondary: "#7a92c3",
+    accent: "#bb86fc"
   }
 })
 Vue.use(Global);
