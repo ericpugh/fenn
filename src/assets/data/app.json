@@ -1,0 +1,131 @@
+{
+  "title" : "Luce Center Scavenger Hunts",
+  "welcome" : "Welcome to Scavenger Hunts at the Smithsonian American Art Museum",
+  "logo" : "",
+  "about" : "<p>Complete the Luce Center scavenger hunts to test your skills! Bring one of the hunts to the Luce Foundation Center and follow the clues to find specific artworks among the more than 3,000 objects on display.</p><p>Get all of the answers correct and win a prize!</p>",
+  "hunts" : [
+    {
+      "id": "women",
+      "title": "Women's History Month Scavenger Hunt",
+      "description": "Explore famous women in our collection!",
+      "instructions": "Follow the clues around the Luce Foundation Center to find these pieces by female artists. Answer the questions and bring your completed hunt back to the Luce Center info desk to claim your prize!",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "/img/hunts/women/thumb.jpg",
+          "large" : ""
+        }
+      },
+      "tasks" : [
+        {
+          "type": "TextAnswerTask",
+          "title": "Find Helen Cordero",
+          "image" : "",
+          "instructions" : "Begin your hunt in the Folk Art section and find this singer. Helen Cordero is a potter from the Cochiti Pueblo in New Mexico. Cordero is credited with creating these “storyteller” figures.",
+          "location": {
+            "name" : "Luce Foundation Center, Folk Art section",
+            "longitude" : "-77.023602",
+            "latitude" : "38.897655"
+          },
+          "question" : {
+            "text" : "What is the accession number?",
+            "image" : "",
+            "hint" : "its a hint"
+          },
+          "solution" : {
+            "requirement": "exact",
+            "answer": "1997.124.148",
+            "correct" : "Good job!",
+            "incorrect" : "Sorry, that's not it."
+          }
+        },
+        {
+          "type": "NumberAnswerTask",
+          "title": "How many woman",
+          "instructions" : "Find this painting of a woman holding a guitar. The artist was an art teacher in the 1880s and worked for the Bureau of American Ethnology.",
+          "location": {
+            "name" : "Luce Foundation Center, Folk Art section",
+            "longitude" : "-77.023602",
+            "latitude" : "38.897655"
+          },
+          "image" : "",
+          "question" : {
+            "text" : "How many other women are in this case?",
+            "image" : "",
+            "hint" : ""
+          },
+          "solution" : {
+            "type": "exact",
+            "answer": "5",
+            "correct" : "Good job!",
+            "incorrect" : "Sorry, that's not it."
+          }
+        }
+      ]
+    },
+    {
+      "id": "bears",
+      "title" : "Bear Scavenger Hunt",
+      "description": "Bears, OH MY! Explore bears in our collection.",
+      "instructions": "Find the bears before they go into hibernation!",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "/img/hunts/bears/thumb.jpg",
+          "large" : ""
+        }
+      },
+      "tasks" : [
+        {
+          "type": "OnOffTask",
+          "title": "Check off the thing here",
+          "instructions" : "Go to some other place and check something off when you've found it",
+          "location": {
+            "name" : "Luce Foundation Center, Folk Art section",
+            "longitude" : "-77.023602",
+            "latitude" : "38.897655"
+          },
+          "on" : "Found",
+          "off" : "Not Found",
+          "solution" : {
+            "text" : "Congratulations on solving the clue!"
+          }
+        }
+
+      ],
+      "startLocation" : {
+        "name" : "Smithsonian American Art Museum, Luce Foundation Center",
+        "longitude" : "-77.023602",
+        "latitude" : "38.897655"
+      }
+    },
+    {
+      "id": "farm",
+      "title" : "Life on the Farm",
+      "description": "Oink, moo, and neigh your way through the Luce Foundation Center! A Scavenger hunt for all ages.",
+      "instructions": "Check off the farm images as you find them in the museum.",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "",
+          "large" : ""
+        }
+      },
+      "tasks" : [
+        {
+          "type": "OnOffTask",
+          "title": "Check off the thing here",
+          "instructions" : "You'll find this image on the 3rd floor",
+          "image" : "",
+          "on" : "Found",
+          "off" : "Not Found",
+          "solution" : {
+            "text" : "Congratulations on completing this task!"
+          }
+        }
+      ],
+      "startLocation" : {
+        "name" : "Smithsonian American Art Museum, Luce Foundation Center",
+        "longitude" : "-77.023602",
+        "latitude" : "38.897655"
+      }
+    }
+  ]
+}

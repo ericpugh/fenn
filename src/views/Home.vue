@@ -1,18 +1,32 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Fenn, a Vue.js Scavenger Hunt App"/>
+    <VLayout row wrap>
+      <VFlex xs12>
+        <h1 v-html="$app.title" class="display-3"></h1>
+        <div v-html="$app.welcome" class="display-1"></div>
+        <VDivider/>
+      </VFlex>
+      <VFlex>
+        <HuntList v-bind:hunts="$app.hunts"/>
+      </VFlex>
+    </VLayout>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import HuntList from '@/components/HuntList.vue'
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    HuntList
+  },
+  created () {
+    // console.log('App Data:');
+    // console.log(this.$app);
   }
 }
 </script>
+
+<style lang="scss">
+  .home {}
+</style>
