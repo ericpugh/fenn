@@ -11,15 +11,16 @@
       "instructions": "Follow the clues around the Luce Foundation Center to find these pieces by female artists. Answer the questions and bring your completed hunt back to the Luce Center info desk to claim your prize!",
       "assets" : {
         "images" : {
-          "thumbnail" : "/img/hunts/women/thumb.jpg",
-          "large" : ""
+          "thumbnail" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/women-thumb.jpg",
+          "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/women.jpg"
         }
       },
+      "taskDisplay" : "list",
       "tasks" : [
         {
           "type": "TextAnswerTask",
           "title": "Find Helen Cordero",
-          "image" : "",
+          "image" : "http://assets.saam.media.s3.amazonaws.com/files/scavenger-hunts/women/tasks/singer.jpg",
           "instructions" : "Begin your hunt in the Folk Art section and find this singer. Helen Cordero is a potter from the Cochiti Pueblo in New Mexico. Cordero is credited with creating these “storyteller” figures.",
           "location": {
             "name" : "Luce Foundation Center, Folk Art section",
@@ -28,8 +29,7 @@
           },
           "question" : {
             "text" : "What is the accession number?",
-            "image" : "",
-            "hint" : "its a hint"
+            "hint" : "this is a hint"
           },
           "solution" : {
             "requirement": "exact",
@@ -63,34 +63,38 @@
       ]
     },
     {
+      "id": "flowers",
+      "title" : "Flowers",
+      "description": "Hunt for our hidden bouquet of flowers!.",
+      "instructions": "Start at the top of the Luce Center on the 4th floor and complete these tasks.",
+      "badge" : "Kids",
+      "assets" : {
+        "images" : {
+          "thumbnail" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/flowers/flowers-thumb.jpg",
+          "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/flowers/flowers.jpg"
+        }
+      },
+      "taskDisplay" : "list",
+      "tasks" : [],
+      "startLocation" : {
+        "name" : "Smithsonian American Art Museum, Luce Foundation Center",
+        "longitude" : "-77.023602",
+        "latitude" : "38.897655"
+      }
+    },
+    {
       "id": "bears",
       "title" : "Bear Scavenger Hunt",
       "description": "Bears, OH MY! Explore bears in our collection.",
       "instructions": "Find the bears before they go into hibernation!",
       "assets" : {
         "images" : {
-          "thumbnail" : "/img/hunts/bears/thumb.jpg",
-          "large" : ""
+          "thumbnail" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/bears/bears-thumb.jpg",
+          "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/bears/bears.jpg"
         }
       },
-      "tasks" : [
-        {
-          "type": "OnOffTask",
-          "title": "Check off the thing here",
-          "instructions" : "Go to some other place and check something off when you've found it",
-          "location": {
-            "name" : "Luce Foundation Center, Folk Art section",
-            "longitude" : "-77.023602",
-            "latitude" : "38.897655"
-          },
-          "on" : "Found",
-          "off" : "Not Found",
-          "solution" : {
-            "text" : "Congratulations on solving the clue!"
-          }
-        }
-
-      ],
+      "taskDisplay" : "list",
+      "tasks" : [],
       "startLocation" : {
         "name" : "Smithsonian American Art Museum, Luce Foundation Center",
         "longitude" : "-77.023602",
@@ -104,16 +108,18 @@
       "instructions": "Check off the farm images as you find them in the museum.",
       "assets" : {
         "images" : {
-          "thumbnail" : "",
-          "large" : ""
+          "thumbnail" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/farm-thumb.jpg",
+          "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/farm.jpg"
         }
       },
+      "badge" : "Kids",
+      "taskDisplay" : "list",
       "tasks" : [
         {
           "type": "OnOffTask",
-          "title": "Check off the thing here",
+          "title": "Find the \"Cornhusker\"",
           "instructions" : "You'll find this image on the 3rd floor",
-          "image" : "",
+          "image" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/tasks/cornhusker.jpg",
           "on" : "Found",
           "off" : "Not Found",
           "solution" : {

@@ -58,7 +58,7 @@
 
 <script>
   export default {
-    name: "app",
+    name: "App",
     data: () => ({
       drawer: false,
       dialog: false
@@ -71,5 +71,7 @@
 </script>
 
 <style lang="scss">
-
+  .cheat {
+    background-color: yellow;
+  }
 </style>

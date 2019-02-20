@@ -6,12 +6,16 @@
             </v-flex>
             <v-divider></v-divider>
             <v-flex xs12>
-                <v-form ref="form" lazy-validation>
-                    <v-text-field v-model="answer" :rules="rules" name="answer" prepend-outer-icon="help-outline" outline required single-line clearable></v-text-field>
-                    <v-btn :disabled="solved" color="accent" @click="submit">Submit</v-btn>
+                <p class="cheat">Cheat Code: {{ task.solution.answer }}</p>
+                <v-form ref="form">
+                    <v-text-field :disabled="correct" v-model="answer" name="answer" prepend-outer-icon="help-outline" outline required single-line clearable></v-text-field>
+                    <v-btn :disabled="correct" color="accent" @click="submit">Submit</v-btn>
                 </v-form>
-                <v-alert v-model="correct" type="success" color="secondary">{{ task.solution.correct }}</v-alert>
-                <!--<v-alert v-model="!correct" type="error" color="danger">{{ task.solution.incorrect }}</v-alert>-->
+                <!-- TODO: move snackbar to it's own component? -->
+                <v-snackbar v-model="incorrect" :bottom="true" :multi-line="true" :timeout="2000">
+                    <v-icon color="accent" left>error_outline</v-icon>
+                    {{ task.solution.incorrect }}
+                </v-snackbar>
             </v-flex>
         </v-layout>
     </v-container>
@@ -22,39 +26,31 @@
         name: 'TextAnswerTask',
         props: {
             task: Object,
-            title: String,
-            instructions: String
+            taskNumber: Number,
+            parentId: String
         },
         data: () => ({
             valid: true,
-            solved: false,
             correct: false,
+            incorrect: false,
             answer: ''
         }),
         methods: {
-            submit: function (event) {
-                console.log(this.answer);
-                console.log(this.task.solution.answer);
-
+            submit: function () {
+                this.incorrect = false;
                 if (this.answer === this.task.solution.answer) {
-                    this.correct = this.solved = true;
+                    this.correct = true;
+                    this.setCompleted();
+                }
+                else {
+                    this.incorrect = true;
                 }
 
-                // if (this.$refs.form.validate()) {
-                    // TODO: update store when "solved"
-
-                // }
             },
-            // getTaskAnswer: function() {
-            //     console.log(task.solution.answer);
-            //     return task.solution.answer;
-            // },
-            // getTaskCorrectMessage: function() {
-            //     return task.solution.correct;
-            // },
-            // getTaskIncorrectMessage: function() {
-            //     return task.solution.incorrect;
-            // }
+            setCompleted: function() {
+                // Set the task to completed.
+                this.$store.commit('hunts/SET_TASK_COMPLETED', { id : this.parentId, index : this.taskNumber });
+            }
         },
         computed: {
             rules () {
@@ -65,13 +61,11 @@
                 // rules.push(match)
                 return rules
             }
-        }
-
-        // TODO: update store when "solved"
-
+        },
     }
 </script>
 
 <style lang="scss">
+
 
 </style>
