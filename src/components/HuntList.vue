@@ -1,21 +1,17 @@
 <template>
   <div grid-list-md>
-    <VLayout row wrap>
-      <VFlex v-for="hunt in hunts" :key="hunt.id" xs12 sm4 m3>
-        <VCard :to="{ name: 'hunt', params: { id: hunt.id }}">
-          <VImg v-if="hunt.assets.images" :src="hunt.assets.images.thumbnail"></VImg>
-          <VCardTitle primary-title>
-            <div>
-              <h3 class="headline mb-0">{{ hunt.title}}</h3>
-              <div v-html="hunt.description"></div>
-            </div>
-          </VCardTitle>
-          <VCardActions>
-            <VBtn flat color="orange">Go!</VBtn>
-          </VCardActions>
-        </VCard>
-      </VFlex>
-    </VLayout>
+    <v-layout row wrap>
+      <v-flex v-for="hunt in hunts" :key="hunt.id" xs12 sm4 m3 pa-3 mb-2>
+        <v-card :to="{ name: 'hunt', params: { id: hunt.id }}">
+          <v-img v-if="hunt.assets.images" :src="hunt.assets.images.large"></v-img>
+          <v-card-title class="headline" primary-title>{{ hunt.title }}</v-card-title>
+          <v-card-text v-html="hunt.description"></v-card-text>
+          <v-card-actions>
+            <v-btn flat color="accent">Go!</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </div>
 </template>
 

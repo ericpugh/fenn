@@ -1,6 +1,6 @@
 module.exports = {
   pwa: {
     name: 'Scavanger Hunt',
-    themeColor: '#42b983'
+    themeColor: '#3357a3'
   }
 }

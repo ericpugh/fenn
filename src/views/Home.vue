@@ -7,7 +7,7 @@
         <VDivider/>
       </VFlex>
       <VFlex>
-        <HuntList v-bind:hunts="$app.hunts"/>
+        <HuntList :hunts="$app.hunts"/>
       </VFlex>
     </VLayout>
   </div>
@@ -16,7 +16,7 @@
 <script>
 import HuntList from '@/components/HuntList.vue'
 export default {
-  name: 'home',
+  name: 'Home',
   components: {
     HuntList
   },
