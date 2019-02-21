@@ -22,13 +22,16 @@
             </component>
         </v-card-actions>
         <v-snackbar v-model="incorrectMessageVisible" :bottom="true" :multi-line="true" color="error" :timeout="timeout">
+            <v-icon color="white">sentiment_dissatisfied</v-icon>
             {{ task.solution.incorrect }}
             <v-btn dark flat v-on:click="incorrectMessageVisible = false">Close</v-btn>
         </v-snackbar>
         <v-snackbar v-model="correctMessageVisible" :bottom="true" :multi-line="true" color="success" :timeout="timeout">
+            <v-icon color="white">sentiment_very_satisfied</v-icon>
             {{ task.solution.correct }}
             <v-btn dark flat v-on:click="correctMessageVisible = false">Close</v-btn>
         </v-snackbar>
+        <v-flex xs12 class="cheat"><v-icon>mood</v-icon> Cheat Code: {{ task.solution.answer }}</v-flex>
     </v-card>
 </template>
 
@@ -36,6 +39,7 @@
     import TaskCompletedOverlay from '@/components/TaskCompletedOverlay.vue'
     import TextAnswerTask from '@/components/TextAnswerTask.vue'
     import NumberAnswerTask from '@/components/NumberAnswerTask.vue'
+    import SelectAnswerTask from '@/components/SelectAnswerTask.vue'
     import OnOffTask from '@/components/OnOffTask.vue'
     export default {
         name: 'Task',
@@ -43,6 +47,7 @@
             TaskCompletedOverlay,
             TextAnswerTask,
             NumberAnswerTask,
+            SelectAnswerTask,
             OnOffTask
         },
         props: {

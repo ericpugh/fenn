@@ -2,6 +2,10 @@
         <v-container class="task">
                 <v-layout class="question" row wrap>
                         <v-flex xs12>
+                                <div v-if="task.question.text" class="question">{{ task.question.text }}</div>
+                        </v-flex>
+                        <v-divider></v-divider>
+                        <v-flex xs12>
                                 <v-checkbox v-model="checked"
                                             :label="checked ? task.on : task.off"
                                             @change="submit"

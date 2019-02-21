@@ -72,6 +72,6 @@
 
 <style lang="scss">
   .cheat {
-    background-color: yellow;
+    font-size: smaller;
   }
 </style>

@@ -2,7 +2,7 @@
     <v-layout class="overlay" align-center justify-center row fill-height>
         <div class="message">
             <v-flex xs12>
-                <v-icon size="200" color="white" flat>done_outline</v-icon>
+                <v-icon size="200" color="white" flat>done</v-icon>
             </v-flex>
             <v-flex xs12>
                 <div class="message white--text" v-html="message"></div>

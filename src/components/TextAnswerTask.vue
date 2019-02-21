@@ -2,11 +2,13 @@
     <v-container class="task">
         <v-layout class="question" row wrap>
             <v-flex xs12>
-                <div v-if="task.question.text" class="question">{{ task.question.text }}</div>
+                <div v-if="task.question.text" class="question">
+                    {{ task.question.text }}
+                    <task-hint-dialog :message="task.question.hint"></task-hint-dialog>
+                </div>
             </v-flex>
             <v-divider></v-divider>
             <v-flex xs12>
-                <p class="cheat">Cheat Code: {{ task.solution.answer }}</p>
                 <v-form ref="form" v-model="valid" lazy-validation>
                     <v-text-field v-model="answer" :disabled="answered" :rules="rules" name="answer" prepend-outer-icon="help-outline" outline required single-line clearable></v-text-field>
                     <v-btn :disabled="answered" color="accent" @click="submit">Submit</v-btn>
@@ -17,8 +19,10 @@
 </template>
 
 <script>
+    import TaskHintDialog from "./TaskHintDialog";
     export default {
         name: 'TextAnswerTask',
+        components: {TaskHintDialog},
         props: {
             task: Object,
             taskNumber: Number,
@@ -31,7 +35,7 @@
         }),
         methods: {
             submit: function () {
-                if (this.answer === this.task.solution.answer) {
+                if ( this.answer === this.task.solution.answer || this.task.solution.requirement === "ambiguous") {
                     this.answered = true;
                     this.$emit('task:completed');
                     this.$refs.form.resetValidation();

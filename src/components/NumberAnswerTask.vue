@@ -6,11 +6,9 @@
             </v-flex>
             <v-divider></v-divider>
             <v-flex xs12>
-                <p class="cheat">Cheat Code: {{ task.solution.answer }}</p>
-
                 <v-form ref="form" lazy-validation>
                     <v-text-field v-model="answer" :disabled="answered" :rules="rules" type="number" name="answer" outline single-line ></v-text-field>
-                    <v-btn :disabled="answered" color="success" @click="submit">Submit</v-btn>
+                    <v-btn :disabled="answered" color="accent" @click="submit">Submit</v-btn>
                 </v-form>
             </v-flex>
         </v-layout>
@@ -32,7 +30,7 @@
         }),
         methods: {
             submit: function () {
-                if (this.answer === this.task.solution.answer) {
+                if ( this.answer === this.task.solution.answer || this.task.solution.requirement === "ambiguous") {
                     this.answered = true;
                     this.$emit('task:completed');
                     this.$refs.form.resetValidation();

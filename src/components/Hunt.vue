@@ -8,10 +8,15 @@
         <v-divider/>
       </v-flex>
       <!--TODO: Display tasks as a "list" showing all tasks, or as a "sequence" showing one card at a time.-->
-      <v-flex xs12>
+      <v-flex v-if="hunt.tasks.length > 0" xs12>
         <div v-for="(task, index) in hunt.tasks" :key="index">
           <task :task="task" :task-number="index" :parent-id="hunt.id"></task>
         </div>
+      </v-flex>
+      <v-flex v-else xs12>
+        <v-alert :value="true" type="info" color="secondary" icon="sentiment_dissatisfied">
+          No tasks have been created for this scavenger hunt yet.
+        </v-alert>
       </v-flex>
     </v-layout>
   </div>
