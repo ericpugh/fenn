@@ -15,6 +15,10 @@ export default {
         getHuntById: (state) => (id) => {
             return state.hunts.find(hunt => hunt.id === id)
         },
+        getTasks: (state, getters) => (id) => {
+            let hunt = getters.getHuntById(id);
+            return hunt.tasks;
+        },
         getTaskCompleted: (state, getters) => (id, taskNumber) => {
             let hunt = getters.getHuntById(id);
             return hunt.tasks[taskNumber].complete;

@@ -29,13 +29,36 @@
     components: {
       Task,
     },
+    methods: {},
     computed: {
       hunt: function () {
         return this.$store.getters['hunts/getHuntById'](this.$route.params.id);
+      },
+      completed: function () {
+        let tasks = this.$store.getters['hunts/getTasks'](this.$route.params.id);
+        let incomplete = _.filter(tasks, function(o) { return !o.complete; });
+        return incomplete.length === 0 ? true : false;
       }
+    },
+    watch: {
+      completed: function(completed) {
+        if (completed) {
+          this.$store.commit('hunts/SET_HUNT_COMPLETED', this.$route.params.id);
+          // Congratulatory "confetti" when user completes a hunt.
+          this.$confetti.start({
+            shape: 'rect',
+            size: 20,
+            dropRate: 15,
+            colors: ['DodgerBlue', 'Gold', 'pink', 'SlateBlue', 'lightblue', 'Violet', 'PaleGreen', 'SteelBlue', 'Crimson', 'White']
+          });
+          setTimeout(() => { this.$confetti.stop() }, 4000);
+        }
+      }
+    },
+    mounted() {
+      //TODO: set active hunt (which should also remove active status from all other hunts)
     }
-    // TODO: add a watcher on the computed hunt to make "active hunt" etc.
-}
+  }
 </script>
 
 <style scoped lang="scss">

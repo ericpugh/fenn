@@ -6,10 +6,10 @@ import store from './store'
 import Vuetify from 'vuetify'
 
 // Helpers.
-import './registerServiceWorker'
-import 'vuetify/dist/vuetify.min.css'
-import colors from 'vuetify/es5/util/colors'
-
+import './registerServiceWorker';
+import 'vuetify/dist/vuetify.min.css';
+import colors from 'vuetify/es5/util/colors';
+import VueConfetti from 'vue-confetti';
 // App Data.
 import Global from "./plugins/global";
 
@@ -19,7 +19,8 @@ Vue.use(Vuetify, {
     secondary: "#7a92c3",
     accent: "#bb86fc"
   }
-})
+});
+Vue.use(VueConfetti);
 Vue.use(Global);
 
 Vue.config.productionTip = false
