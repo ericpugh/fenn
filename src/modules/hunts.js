@@ -34,9 +34,11 @@ export default {
         },
         SET_TASK_COMPLETED: (state, payload) => {
             // TODO: This data isn't persisent. How to make it persist? possible refactor to get Hunts by array index rather than id.
-            let hunt = state.hunts.find(hunt => hunt.id === payload.id)
-            hunt.tasks[payload.index].complete = true;
-            Vue.set(state, 'hunts')
+            let huntIndex =  _.findIndex(state.hunts, function(hunt) { return hunt.id == payload.id; });
+            console.log(huntIndex);
+
+            state.hunts[huntIndex].tasks[payload.index].complete = true;
+            Vue.set(state, 'hunts', state.hunts);
         }
     },
     // ----------------------------------------------------------------------------------

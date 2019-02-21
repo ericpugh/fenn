@@ -40,7 +40,7 @@
         },
         {
           "type": "NumberAnswerTask",
-          "title": "How many woman",
+          "title": "Find the woman holding guitar",
           "instructions" : "Find this painting of a woman holding a guitar. The artist was an art teacher in the 1880s and worked for the Bureau of American Ethnology.",
           "location": {
             "name" : "Luce Foundation Center, Folk Art section",
@@ -56,7 +56,7 @@
           "solution" : {
             "type": "exact",
             "answer": "5",
-            "correct" : "Good job!",
+            "correct" : "Good job! That was a hard one.",
             "incorrect" : "Sorry, that's not it."
           }
         }
@@ -123,7 +123,7 @@
           "on" : "Found",
           "off" : "Not Found",
           "solution" : {
-            "text" : "Congratulations on completing this task!"
+            "correct" : "Congratulations on completing this task!"
           }
         }
       ],

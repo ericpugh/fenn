@@ -1,37 +1,57 @@
 <template>
-        <v-checkbox v-model="checked" :label="checked ? task.on : task.off" color="accent" value="checked" class="large" hide-details></v-checkbox>
+        <v-container class="task">
+                <v-layout class="question" row wrap>
+                        <v-flex xs12>
+                                <v-checkbox v-model="checked"
+                                            :label="checked ? task.on : task.off"
+                                            @change="submit"
+                                            color="success"
+                                            value="checked"
+                                            class="large" hide-details></v-checkbox>
+                        </v-flex>
+                </v-layout>
+        </v-container>
 </template>
 
 <script>
     export default {
         name: 'OnOffTask',
         props: {
-            task: Object
+            task: Object,
+            taskNumber: Number,
+            parentId: String
         },
-        data () {
-            return {
-                checked: false,
+        data: () => ({
+            checked: false,
+        }),
+        methods: {
+            submit: function () {
+                if (this.checked === 'checked') {
+                    this.$emit('task:completed');
+                }
             }
-        }
-        // TODO: update store when "solved"
+        },
+
 
     }
 </script>
 
 <style lang="scss">
     .large.v-input--checkbox {
-        font-size: 4rem;
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
         font-weight: 500;
-        height: 4rem;
+        height: 3rem;
         i {
-            font-size: 4rem;
+            font-size: 3rem;
         }
         label {
-            padding-left: 2rem;
-            font-size: 4rem;
+            padding-left: 1.5rem;
+            font-size: 3rem;
         }
         [class*="__ripple"] {
-            left: 0.5rem;
+            left: -0.5rem;
         }
     }
 </style>
