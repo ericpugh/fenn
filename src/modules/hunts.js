@@ -23,7 +23,7 @@ export default {
             let hunt = getters.getHuntById(id);
             return hunt.tasks[taskNumber].complete;
         },
-        getHuntCompleted: (state, getters) => (id, taskNumber) => {
+        getHuntCompleted: (state, getters) => (id) => {
             let hunt = getters.getHuntById(id);
             return hunt.complete;
         }

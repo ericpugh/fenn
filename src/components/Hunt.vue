@@ -29,29 +29,47 @@
     components: {
       Task,
     },
-    methods: {},
+    methods: {
+      party: function () {
+        // Congratulatory "confetti" when user completes a hunt.
+        this.$confetti.start({
+          shape: 'rect',
+          size: 20,
+          dropRate: 15,
+          colors: ['DodgerBlue', 'Gold', 'pink', 'SlateBlue', 'lightblue', 'Violet', 'PaleGreen', 'SteelBlue', 'Crimson', 'White']
+        });
+        setTimeout(() => { this.$confetti.stop() }, 4000);
+      }
+    },
     computed: {
       hunt: function () {
         return this.$store.getters['hunts/getHuntById'](this.$route.params.id);
       },
-      completed: function () {
+      tasksCompleted: function () {
+        // True when all the hunt's tasks have been completed.
         let tasks = this.$store.getters['hunts/getTasks'](this.$route.params.id);
-        let incomplete = _.filter(tasks, function(o) { return !o.complete; });
-        return incomplete.length === 0 ? true : false;
-      }
+        if (tasks.length > 0) {
+          let incomplete = _.filter(tasks, function(o) { return !o.complete; });
+          return incomplete.length === 0;
+        }
+        else {
+          return false;
+        }
+      },
+      completed: function () {
+        return this.$store.getters['hunts/getHuntCompleted'](this.hunt.id);
+      },
     },
     watch: {
+      tasksCompleted: function(completed) {
+        if (completed) {
+          // Watch when all tasks have been completed and set the hunt completed when true.
+          this.$store.commit('hunts/SET_HUNT_COMPLETED', this.$route.params.id);
+        }
+      },
       completed: function(completed) {
         if (completed) {
-          this.$store.commit('hunts/SET_HUNT_COMPLETED', this.$route.params.id);
-          // Congratulatory "confetti" when user completes a hunt.
-          this.$confetti.start({
-            shape: 'rect',
-            size: 20,
-            dropRate: 15,
-            colors: ['DodgerBlue', 'Gold', 'pink', 'SlateBlue', 'lightblue', 'Violet', 'PaleGreen', 'SteelBlue', 'Crimson', 'White']
-          });
-          setTimeout(() => { this.$confetti.stop() }, 4000);
+          this.party();
         }
       }
     },

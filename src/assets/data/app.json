@@ -61,7 +61,7 @@
           "on" : "Found",
           "off" : "I found it",
           "question" : {
-            "text" : "Check the box when you've found this sculpture?",
+            "text" : "Check the box when you've found this sculpture.",
             "hint" : ""
           },
           "solution" : {

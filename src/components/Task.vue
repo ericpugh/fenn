@@ -1,16 +1,19 @@
 <template>
-    <v-card :class="{ solved : solved }">
+    <v-card class="task" :class="{ solved : solved }">
         <task-completed-overlay v-show="solved"></task-completed-overlay>
-        <v-flex xs12 sm8 md6 offset-sm2 offset-md3 pa-3>
-            <v-img v-if="task.image" :src="task.image"></v-img>
-        </v-flex>
         <v-card-title>
             <v-avatar color="primary" class="mr-3">
                 <span class="white--text headline">{{ taskNumber + 1}}</span>
             </v-avatar>
             <h2>{{ task.title}}</h2>
         </v-card-title>
-        <v-card-text v-html="task.instructions"></v-card-text>
+        <v-card-text>
+            <v-flex xs12 sm8 md6 offset-sm2 offset-md3 pa-3>
+                <v-img v-if="task.image" :src="task.image"></v-img>
+            </v-flex>
+            <div class="instructions" v-html="task.instructions"></div>
+        </v-card-text>
+        <v-divider></v-divider>
         <v-card-actions>
             <component
                     :is="task.type"
@@ -20,6 +23,7 @@
                     v-on:task:completed="onTaskCompleted"
                     v-on:task:incorrect="onTaskIncorrect">
             </component>
+            <v-flex v-if="task.solution.answer" xs12 class="cheat"><v-icon>mood</v-icon> Cheat Code: {{ task.solution.answer }}</v-flex>
         </v-card-actions>
         <v-snackbar v-model="incorrectMessageVisible" :bottom="true" :multi-line="true" color="error" :timeout="timeout">
             <v-icon color="white">sentiment_dissatisfied</v-icon>
@@ -31,7 +35,6 @@
             {{ task.solution.correct }}
             <v-btn dark flat v-on:click="correctMessageVisible = false">Close</v-btn>
         </v-snackbar>
-        <v-flex xs12 class="cheat"><v-icon>mood</v-icon> Cheat Code: {{ task.solution.answer }}</v-flex>
     </v-card>
 </template>
 
@@ -80,7 +83,10 @@
 </script>
 
 <style scoped lang="scss">
-    .v-card.solved {
-        /*margin-bottom: 1rem;*/
+    .v-card.task {
+        margin-bottom: 1rem;
+        .v-card__actions {
+            background-color: #f8faff;
+        }
     }
 </style>
