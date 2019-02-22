@@ -12,8 +12,26 @@
             <v-list-tile-action>Home</v-list-tile-action>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile>
-          <!-- TODO: Display a dialog, which when affirmed re-initializes the store. -->
+        <v-list-tile @click="resetConfirmDialog = true">
+          <v-dialog v-model="resetConfirmDialog" width="75%" light>
+            <v-card>
+              <v-card-title class="headline" primary-title>
+                Are you sure you want to start over?
+              </v-card-title>
+              <v-card-text>
+                This will clear all your completed Scavenger Hunt information.
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary" flat @click="resetConfirmDialog = false">
+                  Close
+                </v-btn>
+                <v-btn color="primary" flat @click="resetConfirmDialog = false; reset();">
+                  Start over
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
           <v-list-tile-action>
             <v-icon>restore</v-icon>
           </v-list-tile-action>
@@ -74,9 +92,13 @@
     name: "App",
     data: () => ({
       drawer: false,
-      dialog: false
+      dialog: false,
+      resetConfirmDialog: false
     }),
     methods: {
+      reset: function () {
+        this.$store.commit('hunts/SET', this.$app.hunts);
+      },
       isHuntCompleted: function (id) {
         return this.$store.getters['hunts/getHuntCompleted'](id);
       }
