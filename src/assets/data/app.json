@@ -162,7 +162,7 @@
           "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/farm.jpg"
         }
       },
-      "badge" : "Kids",
+      "category" : "Kids",
       "tasks" : [
         {
           "type": "OnOffTask",

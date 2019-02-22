@@ -1,14 +1,17 @@
 <template>
-  <div :id="hunt.id" class="hunt">
+  <div class="hunt">
+    <v-card :id="hunt.id" class="hunt" color="secondary" app>
+      <v-card-title primary-title="">
+        <h1 v-html="hunt.title" class="display-3 white--text"></h1>
+      </v-card-title>
+      <v-card-text>
+        <div class="instructions white--text" v-html="hunt.instructions"></div>
+      </v-card-text>
+    </v-card>
+    <v-divider></v-divider>
     <v-layout row wrap xs10 offset-xs1>
-      <!--TODO: How to "page" between or show/hide individual Tasks?-->
-      <v-flex>
-        <h1 v-html="hunt.title" class="display-3"></h1>
-        <div v-html="hunt.instructions"></div>
-        <v-divider/>
-      </v-flex>
       <!--TODO: Display tasks as a "list" showing all tasks, or as a "sequence" showing one card at a time.-->
-      <v-flex v-if="hunt.tasks.length > 0" xs12>
+      <v-flex class="task-list" v-if="hunt.tasks.length > 0" xs12>
         <div v-for="(task, index) in hunt.tasks" :key="index">
           <task :task="task" :task-number="index" :parent-id="hunt.id"></task>
         </div>
