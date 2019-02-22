@@ -1,7 +1,8 @@
 <template>
   <v-app id="app">
     <!--TODO: move drawer to it's own component? -->
-    <v-navigation-drawer v-model="drawer" absolute temporary>
+    <v-navigation-drawer v-model="drawer" app temporary>
+
       <v-list dense>
         <v-list-tile to="/">
           <v-list-tile-action>
@@ -11,19 +12,31 @@
             <v-list-tile-action>Home</v-list-tile-action>
           </v-list-tile-content>
         </v-list-tile>
-      </v-list>
-      <v-divider/>
-      <v-list dense>
-        <v-list-tile :to="{ name: 'hunt', params: { id: hunt.id }}" v-for="hunt in $app.hunts" :key="hunt.id">
+        <v-list-tile>
+          <!-- TODO: Display a dialog, which when affirmed re-initializes the store. -->
           <v-list-tile-action>
-            <v-icon>map</v-icon>
+            <v-icon>restore</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-action>{{ hunt.title }}</v-list-tile-action>
+            <v-list-tile-action>Start over</v-list-tile-action>
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
-      <v-divider/>
+      <v-list>
+        <v-list-group prepend-icon="map" value="true">
+          <v-list-tile slot="activator">
+            <v-list-tile-title>Scavenger Hunts</v-list-tile-title>
+          </v-list-tile>
+          <v-list-tile v-for="hunt in hunts" :key="hunt.id" :to="{ name: 'hunt', params: { id: hunt.id }}">
+            <v-list-tile-content>
+              <v-list-tile-title>{{ hunt.title }}</v-list-tile-title>
+            </v-list-tile-content>
+            <v-list-tile-action v-if="isHuntCompleted(hunt.id)">
+              <v-icon>done</v-icon>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list-group>
+      </v-list>
     </v-navigation-drawer>
     <v-toolbar color="primary" app dark fixed clipped-left dense>
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
@@ -63,6 +76,16 @@
       drawer: false,
       dialog: false
     }),
+    methods: {
+      isHuntCompleted: function (id) {
+        return this.$store.getters['hunts/getHuntCompleted'](id);
+      }
+    },
+    computed: {
+      hunts: function () {
+        return this.$store.getters['hunts/getHunts'];
+      }
+    },
     created() {
       // Set the initial hunts data in state.
       this.$store.commit('hunts/SET', this.$app.hunts);
@@ -72,6 +95,6 @@
 
 <style lang="scss">
   .cheat {
-    background-color: yellow;
+    font-size: smaller;
   }
 </style>

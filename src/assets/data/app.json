@@ -15,7 +15,6 @@
           "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/women.jpg"
         }
       },
-      "taskDisplay" : "list",
       "tasks" : [
         {
           "type": "TextAnswerTask",
@@ -29,7 +28,7 @@
           },
           "question" : {
             "text" : "What is the accession number?",
-            "hint" : "this is a hint"
+            "hint" : "The accession number is listed on the card."
           },
           "solution" : {
             "requirement": "exact",
@@ -40,23 +39,77 @@
         },
         {
           "type": "NumberAnswerTask",
-          "title": "How many woman",
-          "instructions" : "Find this painting of a woman holding a guitar. The artist was an art teacher in the 1880s and worked for the Bureau of American Ethnology.",
+          "title": "What year was \"Christmas\"?",
+          "instructions" : "Stay in Folk Art and find this painting of a winter scene. The work of this popular artist has been featured on greeting cards and other merchandise.",
+          "image" : "http://assets.saam.media.s3.amazonaws.com/files/scavenger-hunts/women/tasks/grandma.jpg",
+          "question" : {
+            "text" : "What year was this painted?",
+            "hint" : "The painter was known as Grandma Moses."
+          },
+          "solution" : {
+            "type": "exact",
+            "answer": "1958",
+            "correct" : "Nice! That was a hard one.",
+            "incorrect" : "Sorry, that's not it."
+          }
+        },
+        {
+          "type": "OnOffTask",
+          "title": "Find this sculpture",
+          "instructions" : "Walk over to the Sculpture section to find this piece by Edmonia Lewis, the first professional African American sculptor to achieve international recognition. This sculpture of Moses is a copy after the piece by Michelangelo.",
+          "image" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/tasks/moses.jpg",
+          "on" : "Found",
+          "off" : "I found it",
+          "question" : {
+            "text" : "Check the box when you've found this sculpture.",
+            "hint" : ""
+          },
+          "solution" : {
+            "correct" : "You found it. Great!"
+          }
+        },
+        {
+          "type": "SelectAnswerTask",
+          "title": "Flower",
+          "image" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/tasks/georgia.jpg",
+          "instructions" : "Go upstairs and find this image by an artist known for her paintings of large flowers.",
+          "question" : {
+            "text" : "What kind of flower is this?",
+            "hint" : "The artist's name is Georgia O'Keeffe."
+          },
+          "solution" : {
+            "requirement": "exact",
+            "answer": "Calla Lily",
+            "selectLabel" : "Flowers",
+            "choices" : [
+              "Begonia",
+              "Easter Lily",
+              "Calla Lily",
+              "Carolina jessamine",
+              "Madonna Lily"
+            ],
+            "correct" : "Good job! Are you a botanist?",
+            "incorrect" : "Nope, that's not it."
+          }
+        },
+        {
+          "type": "TextAnswerTask",
+          "title": "Red Abstraction",
+          "image" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/women/women.jpg",
+          "instructions" : "Find this work by Alma Thomas, an expressionist painter from Washington, D.C. The artist attended Howard University and later taught art to junior high school students.",
           "location": {
             "name" : "Luce Foundation Center, Folk Art section",
             "longitude" : "-77.023602",
             "latitude" : "38.897655"
           },
-          "image" : "",
           "question" : {
-            "text" : "How many other women are in this case?",
-            "image" : "",
-            "hint" : ""
+            "text" : "How does this painting make you feel?",
+            "hint" : "As Whoopi Goldberg once said \"Art and life are subjective. Not everybody's gonna dig what I dig, but I reserve the right to dig it.\""
           },
           "solution" : {
-            "type": "exact",
-            "answer": "5",
-            "correct" : "Good job!",
+            "requirement": "ambiguous",
+            "answer": "There's no wrong answer.",
+            "correct" : "Great!",
             "incorrect" : "Sorry, that's not it."
           }
         }
@@ -67,14 +120,12 @@
       "title" : "Flowers",
       "description": "Hunt for our hidden bouquet of flowers!.",
       "instructions": "Start at the top of the Luce Center on the 4th floor and complete these tasks.",
-      "badge" : "Kids",
       "assets" : {
         "images" : {
           "thumbnail" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/flowers/flowers-thumb.jpg",
           "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/flowers/flowers.jpg"
         }
       },
-      "taskDisplay" : "list",
       "tasks" : [],
       "startLocation" : {
         "name" : "Smithsonian American Art Museum, Luce Foundation Center",
@@ -93,7 +144,6 @@
           "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/bears/bears.jpg"
         }
       },
-      "taskDisplay" : "list",
       "tasks" : [],
       "startLocation" : {
         "name" : "Smithsonian American Art Museum, Luce Foundation Center",
@@ -112,8 +162,7 @@
           "large" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/farm.jpg"
         }
       },
-      "badge" : "Kids",
-      "taskDisplay" : "list",
+      "category" : "Kids",
       "tasks" : [
         {
           "type": "OnOffTask",
@@ -121,9 +170,13 @@
           "instructions" : "You'll find this image on the 3rd floor",
           "image" : "http://s3.amazonaws.com/assets.saam.media/files/scavenger-hunts/farm/tasks/cornhusker.jpg",
           "on" : "Found",
-          "off" : "Not Found",
+          "off" : "I found it",
+          "question" : {
+            "text" : "Check the box when you've found this painting.",
+            "hint" : ""
+          },
           "solution" : {
-            "text" : "Congratulations on completing this task!"
+            "correct" : "Congratulations on completing this task!"
           }
         }
       ],

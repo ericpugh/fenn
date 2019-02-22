@@ -15,16 +15,25 @@ export default {
         getHuntById: (state) => (id) => {
             return state.hunts.find(hunt => hunt.id === id)
         },
+        getTasks: (state, getters) => (id) => {
+            let hunt = getters.getHuntById(id);
+            return hunt.tasks;
+        },
         getTaskCompleted: (state, getters) => (id, taskNumber) => {
             let hunt = getters.getHuntById(id);
             return hunt.tasks[taskNumber].complete;
+        },
+        getHuntCompleted: (state, getters) => (id) => {
+            let hunt = getters.getHuntById(id);
+            return hunt.complete;
         }
     },
     // ----------------------------------------------------------------------------------
     mutations: {
         SET: (state, hunts) => {
-            // Add initial completed state of all hunt tasks.
+            // Add initial completed state of all hunts and tasks.
             hunts.map((hunt) => {
+                hunt.complete = false;
               hunt.tasks.map((task) => {
                   task.complete = false;
               })
@@ -34,16 +43,22 @@ export default {
         },
         SET_TASK_COMPLETED: (state, payload) => {
             // TODO: This data isn't persisent. How to make it persist? possible refactor to get Hunts by array index rather than id.
-            let hunt = state.hunts.find(hunt => hunt.id === payload.id)
-            hunt.tasks[payload.index].complete = true;
-            Vue.set(state, 'hunts')
-        }
-    },
-    // ----------------------------------------------------------------------------------
-    actions: {
-        SET_ACTIVE_HUNT: (context, id) => {
+            let huntIndex =  _.findIndex(state.hunts, function(hunt) { return hunt.id == payload.id; });
+            state.hunts[huntIndex].tasks[payload.index].complete = true;
+            Vue.set(state, 'hunts', state.hunts);
+        },
+        SET_HUNT_COMPLETED: (state, id) => {
+            // TODO: This data isn't persisent. How to make it persist? possible refactor to get Hunts by array index rather than id.
+            let huntIndex =  _.findIndex(state.hunts, function(hunt) { return hunt.id == id; });
+            state.hunts[huntIndex].complete = true;
+            Vue.set(state, 'hunts', state.hunts);
+        },
+        SET_ACTIVE_HUNT: (state, id) => {
             // TODO: given a hunt id set the hunt as active.
         }
-    }
+
+    },
+    // ----------------------------------------------------------------------------------
+    actions: {}
 
 }
